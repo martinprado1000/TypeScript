@@ -15,19 +15,31 @@ unk = "asd";
 unk = 123;
 console.log(`El tipo de dato es: ${typeof unk}`); // Esto retorna number
 
-// Funciones, hay que evitasr el any implicito, siempre tratar de ponet el tipo
+// **************** Funciones ****************************
+// Hay que evitar el any implicito, siempre tratar de ponet el tipo
 const funSaludo = (nombre:string) => { // A las funciones si no le paso el tipo de dato lo va a tomar como any porque no sabe el tipo de dato que le va a llegar.
     console.log("Hola " + nombre);
 }
 funSaludo("Martin");
 
-const funSaludoObj = ({nombre,edad}:{nombre:string,edad:number}) => { // Asi tipamos un objeto
+// Asi tipamos un objeto
+const funSaludoObj = ({nombre,edad}:{nombre:string,edad:number}) => { 
     console.log("Hola " + nombre);
 }
 funSaludoObj({nombre:"Martin" , edad:23});
 
-const suma = ({num1,num2}:{num1:number,num2:number}):number => { // Asi tipamos lo que retorna una funcion
+ // Asi tipamos lo que retorna una funcion
+const suma = ({num1,num2}:{num1:number,num2:number}):number => {
     const res:number = num1 + num2;
     return res
 }
 suma({num1:10 , num2:15});
+
+// Asi tipamos una funcion
+const saludoFn = (fun:Function)=>{  //  Function: es como si fuese en any de las funciones, NO esta bien usarlo
+    fun("Juan")
+}
+saludoFn((nombre:string)=>{
+    console.log(`Hola ${nombre}`)
+})
+console.log("first")
